@@ -10,7 +10,7 @@ namespace SportsStore.Models
 
         public IEnumerable<Product> Products
         {
-            get { return context.Products.ToList(); }
+            get { return context.Products; }
         }
 
         public async Task<int> SaveProductAsync(Product product)

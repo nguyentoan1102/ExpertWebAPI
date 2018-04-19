@@ -9,12 +9,12 @@ namespace SportsStore
     {
         public void Configuration(IAppBuilder app)
         {
-            //app.CreatePerOwinContext(
-            //  Infrastructure.Identity.StoreIdentityDbContext.Create);
+            //app.CreatePerOwinContext(StoreIdentityDbContext.Create);
             //app.CreatePerOwinContext<StoreUserManager>(StoreUserManager.Create);
             //app.CreatePerOwinContext<StoreRoleManager>(StoreRoleManager.Create);
 
-            //app.UseCookieAuthentication(new CookieAuthenticationOptions {
+            //app.UseCookieAuthentication(new CookieAuthenticationOptions
+            //{
             //    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie
             //});
         }

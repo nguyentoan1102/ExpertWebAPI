@@ -1,7 +1,6 @@
 ﻿using SportsStore.Models;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SportsStore.Controllers
@@ -9,27 +8,26 @@ namespace SportsStore.Controllers
     public class PrepController : Controller
     {
         private IRepository repo;
-        private ProductDbContext contex = new ProductDbContext();
 
-        public PrepController()
+        public PrepController(IRepository pReponsitory)
         {
-            repo = new ProductRepository();
+            repo = pReponsitory;
         }
 
         public ActionResult Index()
         {
             var products = repo.Products;
-            return View(products);
+            return View(products.ToList());
         }
 
-        [Authorize(Roles = "Administrators")]
+        //  [Authorize(Roles = "Administrators")]
         public async Task<ActionResult> DeleteProduct(int id)
         {
             await repo.DeleteProductAsync(id);
             return RedirectToAction("Index");
         }
 
-        [Authorize(Roles = "Administrators")]
+        // [Authorize(Roles = "Administrators")]
         public async Task<ActionResult> SaveProduct(Product product)
         {
             await repo.SaveProductAsync(product);
@@ -53,7 +51,8 @@ namespace SportsStore.Controllers
             return RedirectToAction("Orders");
         }
 
-        //public async Task<ActionResult> SignIn() {
+        //public async Task<ActionResult> SignIn()
+        //{
         //    IAuthenticationManager authMgr = HttpContext.GetOwinContext().Authentication;
         //    StoreUserManager userMrg =
         //        HttpContext.GetOwinContext().GetUserManager<StoreUserManager>();
@@ -64,10 +63,10 @@ namespace SportsStore.Controllers
         //    return RedirectToAction("Index");
         //}
 
-        public ActionResult SignOut()
-        {
-            HttpContext.GetOwinContext().Authentication.SignOut();
-            return RedirectToAction("Index");
-        }
+        //public ActionResult SignOut()
+        //{
+        //    HttpContext.GetOwinContext().Authentication.SignOut();
+        //    return RedirectToAction("Index");
+        //}
     }
 }
