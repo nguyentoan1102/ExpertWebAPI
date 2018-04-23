@@ -22,9 +22,10 @@ namespace SportsStore.Controllers
         public IEnumerable<Product> GetProducts() => repository.Products;
 
         [HttpGet]
-        public Product GetProductById(int id)
+        public IHttpActionResult GetProductById(int id)
         {
-            return repository.Products.Where(p => p.Id == id).FirstOrDefault();
+            Product result = repository.Products.Where(p => p.Id == id).FirstOrDefault();
+            return result == null ? (IHttpActionResult)BadRequest("No Product Found") : Ok(result);
         }
 
         public async Task PostProduct(Product product)

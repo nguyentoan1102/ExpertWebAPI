@@ -7,13 +7,13 @@ namespace SportsStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class InitialTable : IMigrationMetadata
+    public sealed partial class Createtable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Createtable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804191523458_InitialTable"; }
+            get { return "201804200305419_Create-table"; }
         }
         
         string IMigrationMetadata.Source
